@@ -26,9 +26,10 @@ var path = require('path');
 
 var PORT = process.env.PORT || 3004;
 
-var DB_URI = "mongodb://localhost:27017/studs";
+var DB_URI = process.env.DB_URI;
 //connect to the mongodb server
 
+console.log(DB_URI)
 
 _mongoose2.default.connect(DB_URI, { useMongoClient: true }, function (err) {
     if (err) {
