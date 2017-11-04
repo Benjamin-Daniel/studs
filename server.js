@@ -65,9 +65,6 @@ function checkNumberOfEmail(newStudent, database) {
 // Serve static files from the React app
 server.use(express.static(path.join(__dirname, 'main/build')));
 
-server.get('*', (req, res) => {
-    res.sendFile('/main/build/index.html');
-});
 
 server.get('/api', function (req, res) {
     Student.find({}, function (err, foundData) {
@@ -206,6 +203,9 @@ server.delete('/api/:id', function (req, res) {
     });
 });
 
+server.get('*', (req, res) => {
+    res.sendFile('main/build/index.html');
+});
 
 
 server.listen(PORT, function () {
