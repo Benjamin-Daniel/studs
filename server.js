@@ -66,7 +66,7 @@ function checkNumberOfEmail(newStudent, database) {
 server.use(express.static(path.join(__dirname, 'main/build')));
 
 server.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/main/build/index.html'));
+    res.sendFile('/main/build/index.html');
 });
 
 server.get('/api', function (req, res) {
