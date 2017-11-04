@@ -1,8 +1,6 @@
-'use strict';
-require('dotenv');
 var express = require('express');
 
-const app = express();
+const server = express();
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -22,10 +20,10 @@ mongoose.connect(DB_URI, { useMongoClient: true }, function (err) {
 });
 
 mongoose.Promise = global.Promise;
-app.use(morgan('dev'))
+server.use(morgan('dev'))
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: false }));
 
 var Student = require('./models/Student');
 
@@ -48,8 +46,8 @@ function checkforduplicateEmail(newStudent, database) {
         if (one.email === two.email) {
             check = true
         };
-        
-        
+
+
     })
     return check
 }
@@ -65,10 +63,10 @@ function checkNumberOfEmail(newStudent, database) {
 }
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'main/build')));
+server.use(express.static(path.join(__dirname, 'main/build')));
 
 
-app.get('/api', function (req, res) {
+server.get('/api', function (req, res) {
     Student.find({}, function (err, foundData) {
         if (err) {
             console.log(err);
@@ -78,7 +76,7 @@ app.get('/api', function (req, res) {
     })
 });
 
-app.post('/api/add', function (req, res) {
+server.post('/api/add', function (req, res) {
     var name = req.body.name;
     var otherNames = req.body.otherNames;
     var email = req.body.email;
@@ -135,7 +133,7 @@ app.post('/api/add', function (req, res) {
     })
 })
 
-app.put('/api/:id', function (req, res) {
+server.put('/api/:id', function (req, res) {
     var _id = req.params.id;
     var name = req.body.name;
     var email = req.body.email;
@@ -189,7 +187,7 @@ app.put('/api/:id', function (req, res) {
     });
 });
 
-app.delete('/api/:id', function (req, res) {
+server.delete('/api/:id', function (req, res) {
     var _id = req.params.id;
     Student.findByIdAndRemove({ _id }, function (err, deletedObject) {
         if (err) {
@@ -206,10 +204,10 @@ app.delete('/api/:id', function (req, res) {
 });
 
 
-app.get('*', function (req, res) {
+server.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/main/build/index.html'));
 });
 
-app.listen(PORT, function () {
+server.listen(PORT, function () {
     console.log(`app lauched on http://localhost:${PORT}`);
 });
