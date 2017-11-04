@@ -203,10 +203,10 @@ server.delete('/api/:id', function (req, res) {
     });
 });
 
-server.get('*', (req, res) => {
-    res.sendFile('main/build/index.html');
-});
 
+server.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + 'main/build/index.html'));
+});
 
 server.listen(PORT, function () {
     console.log(`app lauched on http://localhost:${PORT}`);
