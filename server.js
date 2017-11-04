@@ -12,9 +12,6 @@ var DB_URI = "mongodb://first-studs:first-studs@cluster0-shard-00-00-loasz.mongo
 //var DB_URI = process.env.DB_URI;
 //connect to the mongodb server
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'main/build')));
-
 
 mongoose.connect(DB_URI, { useMongoClient: true }, function (err) {
     if (err) {
@@ -67,9 +64,9 @@ function checkNumberOfEmail(newStudent, database) {
     return check
 }
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + './main/build/index.html');
-});    
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'main/build')));
+
 
 
 app.get('/api', function (req, res) {
