@@ -67,7 +67,7 @@ server.use(express.static(path.join(__dirname, 'main/build')));
 
 
 server.get('/', function (req, res) {
-    res.sendFile('main/build/index.html')
+    res.sendFile('main/build/index.html', { root: __dirname })
 });
 
 server.get('/api', function (req, res) {
