@@ -64,10 +64,13 @@ function checkNumberOfEmail(newStudent, database) {
 
 // Serve static files from the React app
 server.use(express.static(path.join(__dirname, 'main/build')));
-
+var filePath = "./main/build/index.html";
+console.log(filePath)
+var resolvedPath = path.resolve(filePath);
+console.log(resolvedPath)
 
 server.get('/', function (req, res) {
-    res.sendFile('./main/build/index.html', { root: __dirname })
+    res.sendFile(resolvedPath)
 });
 
 server.get('/api', function (req, res) {
