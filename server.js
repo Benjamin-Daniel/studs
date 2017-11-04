@@ -68,7 +68,7 @@ function checkNumberOfEmail(newStudent, database) {
 }
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/main/build/index.html');
+    res.sendFile(__dirname + './main/build/index.html');
 });    
 
 
