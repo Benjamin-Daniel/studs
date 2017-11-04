@@ -1,5 +1,5 @@
 'use strict';
-
+require('dotenv');
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -26,7 +26,8 @@ var path = require('path');
 
 var PORT = process.env.PORT || 3004;
 
-var DB_URI = process.env.DB_URI;
+var DB_URI="mongodb://first-studs:first-studs@cluster0-shard-00-00-loasz.mongodb.net:27017,cluster0-shard-00-01-loasz.mongodb.net:27017,cluster0-shard-00-02-loasz.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin"
+//var DB_URI = process.env.DB_URI;
 //connect to the mongodb server
 
 console.log(DB_URI)
