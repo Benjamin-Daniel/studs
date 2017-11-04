@@ -42,7 +42,7 @@ router.get('/', function (req, res) {
     res.status(200).send("yay, studs how are you?")
 })
 */
-app.get('/', function (req, res) {
+router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '../main/build/index.html'));
 });
 
