@@ -18,7 +18,7 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 // eslint-disable-next-line 
 const ROOT_URL = 'http://loalhost:3003/api'
 
-export function fetchPosts() {
+export function fetchStudents() {
     const request = axios.get('/api');
     return {
         type: FETCH_POSTS,
@@ -26,7 +26,7 @@ export function fetchPosts() {
     }
 }
 
-export function createPost(props) {
+export function createStudent(props) {
     const request = axios.post(`/api/add`, props);
     return {
         type: CREATE_POSTS,
@@ -34,14 +34,14 @@ export function createPost(props) {
     }
 }
 
-export function deletePost(id) {
+export function deleteStudent(id) {
     const request = axios.delete(`/api/${id}`);
     return {
         type: DELETE_POSTS,
         payload: request
     }
 }
-export function updatePost(id, props) {
+export function updateStudent(id, props) {
     const request = axios.put(`/api/${id}`, props)
     return {
         type: UPDATE_POST,

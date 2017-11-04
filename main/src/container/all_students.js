@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // eslint-disable-next-line
 import { bindActionCreators } from 'redux'
-import { fetchPosts, selectedStudent, addStudent, setError } from '../actions/index'
+import { fetchStudents, selectedStudent, addStudent, setError } from '../actions/index'
 
 const imgstyle = {
     width: '-webkit-fill-available',
@@ -14,7 +14,7 @@ const listStyle = {
 class All extends Component {
 
     componentDidMount() {
-        this.props.fetchPosts()
+        this.props.fetchStudents()
             .then(data => {
                 if (data.error) {
                     this.props.setError('Server\'s down 👻');
@@ -166,5 +166,5 @@ function mapDispatchToProps(dispatch) {
 }
 */
 
-export default connect(mapStateToProps, { fetchPosts, selectedStudent, addStudent, setError })(All);
+export default connect(mapStateToProps, { fetchStudents, selectedStudent, addStudent, setError })(All);
 

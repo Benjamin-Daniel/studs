@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-import { createPost, fetchPosts, deleteSelected } from '../actions/index';
+import { createStudent, fetchStudents, deleteSelected } from '../actions/index';
 
 const validate = values => {
     const errors = {}
@@ -125,7 +125,7 @@ const mapStateToProps = (state) => ({
     student: state.activeStudent
 });
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ createPost: createPost, fetchPosts: fetchPosts, deleteSelected: deleteSelected }, dispatch)
+    return bindActionCreators({ createStudent: createStudent, fetchStudents: fetchStudents, deleteSelected: deleteSelected }, dispatch)
 }
 UpdateForm = connect(
     mapStateToProps,

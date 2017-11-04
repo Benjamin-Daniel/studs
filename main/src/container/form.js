@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { updatePost, fetchPosts, deleteSelected, setMessage } from '../actions/index';
+import { updateStudent, fetchStudents, deleteSelected, setMessage } from '../actions/index';
 import { connect } from 'react-redux';
 
 import UpdateForm from './update'
@@ -10,11 +10,11 @@ class Form extends Component {
     
     submit = (props) => {
         var id = this.props.student._id
-        this.props.updatePost(id, props)
+        this.props.updateStudent(id, props)
         .then((data) => {
             this.props.setMessage('updated')
             this.props.deleteSelected();
-            this.props.fetchPosts();
+            this.props.fetchStudents();
         })
     }
 
@@ -31,4 +31,4 @@ const mapStateToProps = (state) => ({
     // ...
     student: state.activeStudent
 });
-export default connect(mapStateToProps, { updatePost, fetchPosts, deleteSelected, setMessage })(Form);
+export default connect(mapStateToProps, { updateStudent, fetchStudents, deleteSelected, setMessage })(Form);

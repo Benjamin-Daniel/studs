@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import SelectField from 'material-ui/SelectField'
 //import asyncValidate from './asyncValidate' --> this is to imitate server latency
-import { createPost, clearStudent } from '../actions/index';
+import { createStudent, clearStudent } from '../actions/index';
 
 const validate = values => {
     const errors = {}
@@ -139,7 +139,7 @@ function mapStateToProps(state) {
 export default reduxForm({
     form: 'PostNew', // a unique identifier for this form
     validate
-}, null, { createPost })(PostsNew)
+}, null, { createStudent })(PostsNew)
 */
 const mapStateToProps = (state) => ({
     // ...
@@ -147,7 +147,7 @@ const mapStateToProps = (state) => ({
 });
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ createPost: createPost, clearStudent: clearStudent }, dispatch)
+    return bindActionCreators({ createStudent: createStudent, clearStudent: clearStudent }, dispatch)
 }
 AddStuds = connect(
     mapStateToProps,

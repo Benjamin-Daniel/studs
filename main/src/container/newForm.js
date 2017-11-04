@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { fetchPosts, createPost, deleteSelected, clearStudent, setError } from '../actions/index';
+import { fetchStudents, createStudent, deleteSelected, clearStudent, setError } from '../actions/index';
 import { connect } from 'react-redux';
 
 import AddStuds from './addStuds'
 
 class NewForm extends Component {
     submit = (props) => {
-        this.props.createPost(props)
+        this.props.createStudent(props)
             .then(data => {
                 if (data.error) {
                     this.props.clearStudent();
                     return this.props.setError('Server\'s down')
                 }
                 this.props.clearStudent();
-                this.props.fetchPosts();
+                this.props.fetchStudents();
             })
     }
 
@@ -56,4 +56,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { createPost, deleteSelected, clearStudent, fetchPosts, setError })(NewForm);
+export default connect(mapStateToProps, { createStudent, deleteSelected, clearStudent, fetchStudents, setError })(NewForm);

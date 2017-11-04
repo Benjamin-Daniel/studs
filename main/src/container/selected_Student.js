@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { deleteSelected, setMessage, setError, updatePost, clearStudent, fetchPosts, deletePost } from '../actions/index';
+import { deleteSelected, setMessage, setError, updateStudent, clearStudent, fetchStudents, deleteStudent } from '../actions/index';
 import Form from '../container/form';
 
 const img = {
@@ -20,7 +20,7 @@ class Student extends Component {
     deleteStudent() {
         var thestudent = this.props.student;
         var id = thestudent._id;
-        this.props.deletePost(id)
+        this.props.deleteStudent(id)
             .then((data) => {
                 this.props.deleteSelected()
                 this.props.clearStudent()
@@ -35,7 +35,7 @@ class Student extends Component {
                     this.props.setMessage(`${thestudent.name} has been deleted`)
                     this.props.deleteSelected()
                     this.props.clearStudent()
-                    return this.props.fetchPosts()
+                    return this.props.fetchStudents()
                         .then((data) => {
                             if (data.error) {
                                 this.props.setError('Server\'s down 👻')
@@ -113,4 +113,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { deleteSelected, setMessage, setError, updatePost, fetchPosts, clearStudent, deletePost })(Student)
+export default connect(mapStateToProps, { deleteSelected, setMessage, setError, updateStudent, fetchStudents, clearStudent, deleteStudent })(Student)
