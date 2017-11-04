@@ -12,7 +12,8 @@ var DB_URI = "mongodb://first-studs:first-studs@cluster0-shard-00-00-loasz.mongo
 //var DB_URI = process.env.DB_URI;
 //connect to the mongodb server
 
-app.use('/', express.static(__dirname + '/main/build'));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'main/build')));
 
 
 mongoose.connect(DB_URI, { useMongoClient: true }, function (err) {
@@ -24,8 +25,6 @@ mongoose.connect(DB_URI, { useMongoClient: true }, function (err) {
 });
 
 mongoose.Promise = global.Promise;
-//app.use('/', express.static('public'));
-// Serve static files from the React app
 app.use(morgan('dev'))
 
 app.use(bodyParser.json());
