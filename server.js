@@ -70,7 +70,7 @@ var resolvedPath = path.resolve(filePath);
 console.log(resolvedPath)
 
 server.get('/', function (req, res) {
-    res.sendFile(resolvedPath)
+    res.sendFile(filePath)
 });
 
 server.get('/api', function (req, res) {
