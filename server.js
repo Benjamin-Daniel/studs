@@ -1,34 +1,21 @@
 'use strict';
 require('dotenv');
-var _express = require('express');
+var express = require('express');
 
-var _express2 = _interopRequireDefault(_express);
-
-var _morgan = require('morgan');
-
-var _morgan2 = _interopRequireDefault(_morgan);
-
-var _bodyParser = require('body-parser');
-
-var _bodyParser2 = _interopRequireDefault(_bodyParser);
-
-var _mongoose = require('mongoose');
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var path = require('path');
-
+const app = express();
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var PORT = process.env.PORT || 3004;
-
+const path = require('path');
 var DB_URI = "mongodb://first-studs:first-studs@cluster0-shard-00-00-loasz.mongodb.net:27017,cluster0-shard-00-01-loasz.mongodb.net:27017,cluster0-shard-00-02-loasz.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin"
 //var DB_URI = process.env.DB_URI;
 //connect to the mongodb server
 
-console.log(DB_URI)
+app.use('/', express.static(__dirname + '/main/build'));
 
-_mongoose2.default.connect(DB_URI, { useMongoClient: true }, function (err) {
+
+mongoose.connect(DB_URI, { useMongoClient: true }, function (err) {
     if (err) {
         return console.log(err);
     }
@@ -36,24 +23,16 @@ _mongoose2.default.connect(DB_URI, { useMongoClient: true }, function (err) {
     return console.log("Succesfully connected to MongoDB");
 });
 
-_mongoose2.default.Promise = global.Promise;
-
-var app = (0, _express2.default)();
-
+mongoose.Promise = global.Promise;
 //app.use('/', express.static('public'));
 // Serve static files from the React app
-app.use(_express2.default.static(path.join(__dirname, '/main/build')));
+app.use(morgan('dev'))
 
-app.use((0, _morgan2.default)('dev'));
-
-app.use(_bodyParser2.default.json());
-app.use(_bodyParser2.default.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var Student = require('./models/Student');
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + './main/build/index.html');
-});    
 
 
 function checkforduplicate(newStudent, database) {
@@ -73,8 +52,8 @@ function checkforduplicateEmail(newStudent, database) {
         if (one.email === two.email) {
             check = true
         };
-
-
+        
+        
     })
     return check
 }
@@ -89,6 +68,9 @@ function checkNumberOfEmail(newStudent, database) {
     return check
 }
 
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/main/build/index.html');
+});    
 
 
 app.get('/api', function (req, res) {
