@@ -42,9 +42,6 @@ router.get('/', function (req, res) {
     res.status(200).send("yay, studs how are you?")
 })
 */
-router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '../main/build/index.html'));
-});
 
 router.get('/api', function (req, res) {
     Student.find({}, function (err, foundData) {
