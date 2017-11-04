@@ -1,0 +1,29 @@
+{
+  "name": "studs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "webpack-watch": "webpack -w",
+    "express-server": "node ./server",
+    "dev": "concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "brunch build -p"
+  },
+  "author": "Benjamin Daniel>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.10.8",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "concurrently": "^1.0.0"
+  },
+  "description": ""
+}
