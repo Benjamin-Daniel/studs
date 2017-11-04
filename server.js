@@ -205,7 +205,7 @@ server.delete('/api/:id', function (req, res) {
 
 
 server.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + './main/build/index.html'));
+    res.sendFile(path.join('./main/build/index.html'));
 });
 
 server.listen(PORT, function () {
