@@ -10,6 +10,9 @@
     "start": "node server.js",
     "build": "brunch build -p"
   },
+  "engines": {
+    "node": "6.7.0"
+ },
   "author": "Benjamin Daniel>",
   "license": "ISC",
   "dependencies": {
