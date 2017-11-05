@@ -9406,10 +9406,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/
 }
 
-* {
-  font-family: Lato;
-  color: black;
-}
+
 select {
   display: block;
   margin: 15px 0;
@@ -9464,7 +9461,6 @@ li {
 }
 .mist {
   overflow: auto;
-  font-family: 'Lato', sans-serif;
   /*height: 75vh;*/
   top: 10%;
   margin: auto;
