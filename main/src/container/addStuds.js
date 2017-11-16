@@ -128,19 +128,8 @@ class AddStuds extends Component {
     }
 }
 
-/*
-function mapStateToProps(state) {
-    return {
-        student: state.activeStudent
-    };
-}
 
 
-export default reduxForm({
-    form: 'PostNew', // a unique identifier for this form
-    validate
-}, null, { createStudent })(PostsNew)
-*/
 const mapStateToProps = (state) => ({
     // ...
     student: state.activeStudent

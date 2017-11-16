@@ -76,17 +76,15 @@ class All extends Component {
                     The Database is empty
                 <div className='flow-text'>
                         Well i guess this is the first time you are using this app.
-                    This is a School <code className='blue-text'>(Bakery)</code> web app, each student has a
-                    a particular level,
+                    This is a School <code className='blue-text'>(Bakery)</code> web app, each student has a particular level,
                     <ul style={{ display: 'flex', flexDirection: 'column' }}>
                             <li style={listStyle}>
                                 <p>
                                     Beginner
                                 </p>
                                 <small>
-                                    The student's in this catergory are those that have no or little
-                                    experience in this field
-                            </small>
+                                    The student's in this catergory are those that have no experience in this field
+                                </small>
                             </li>
                             <li style={listStyle}>
                                 <p>
@@ -160,11 +158,6 @@ function mapStateToProps(state) {
     };
 }
 
-/*
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ selectedStudent: selectedStudent }, dispatch)
-}
-*/
 
 export default connect(mapStateToProps, { fetchStudents, selectedStudent, addStudent, setError })(All);
 
